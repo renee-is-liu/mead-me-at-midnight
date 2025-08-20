@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://gpmjxai28mt5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y4dmf"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_oxqdm"]
+sky_material = SubResource("ProceduralSkyMaterial_y4dmf")
+
+[sub_resource type="Environment" id="Environment_hdhge"]
+background_mode = 2
+sky = SubResource("Sky_oxqdm")
+tonemap_mode = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_oturf"]
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hdhge")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, -0.726933, 5.94293, -0.0644997)
+shadow_enabled = true
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+use_collision = true
+mesh = SubResource("BoxMesh_oturf")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.158175, -0.743895, 0.649307, 0, 0.657586, 0.75338, -0.987411, -0.119166, 0.104014, 8.5913, 7.08248, 1.94792)
+fov = 59.551
