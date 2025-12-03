@@ -1,0 +1,70 @@
+[gd_scene load_steps=13 format=3 uid="uid://gpmjxai28mt5"]
+
+[ext_resource type="Script" uid="uid://us5yeqtp6k6j" path="res://global.gd" id="1_7mycd"]
+[ext_resource type="Script" uid="uid://btiqg4ui1vsmw" path="res://scripts/player/player.gd" id="1_lquwl"]
+[ext_resource type="PackedScene" uid="uid://dioru38dqs3h6" path="res://scenes/characters/yolf.tscn" id="2_7mycd"]
+[ext_resource type="PackedScene" uid="uid://bh7vybpaefp8g" path="res://scenes/characters/ylf_animated.tscn" id="3_272bh"]
+[ext_resource type="PackedScene" uid="uid://cp1q1qm26omnh" path="res://scenes/characters/zombie.tscn" id="4_5vw27"]
+[ext_resource type="PackedScene" uid="uid://bok7sxexw7x25" path="res://scenes/characters/animated_man.tscn" id="5_kek77"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xm2m"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_h2yge"]
+sky_material = SubResource("ProceduralSkyMaterial_0xm2m")
+
+[sub_resource type="Environment" id="Environment_1bvp3"]
+background_mode = 2
+sky = SubResource("Sky_h2yge")
+tonemap_mode = 2
+
+[sub_resource type="CapsuleShape3D" id="1"]
+height = 1.8
+
+[sub_resource type="BoxShape3D" id="2"]
+size = Vector3(100, 0, 100)
+
+[sub_resource type="PlaneMesh" id="3"]
+size = Vector2(100, 100)
+
+[node name="Spatial" type="Node3D"]
+script = ExtResource("1_7mycd")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1bvp3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 235.159, 0)
+shadow_enabled = true
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
+script = ExtResource("1_lquwl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7587, 0)
+shape = SubResource("1")
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.426401, 0)
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("2")
+
+[node name="MeshInstance" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("3")
+
+[node name="yolf" parent="." instance=ExtResource("2_7mycd")]
+transform = Transform3D(-0.0627905, 0, 0.998027, 0, 1, 0, -0.998027, 0, -0.0627905, 4.41041, 0, -2.72441)
+
+[node name="ylf_animated" parent="." instance=ExtResource("3_272bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5766, 0, -3.06051)
+
+[node name="zombie" parent="." instance=ExtResource("4_5vw27")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -3.04158)
+
+[node name="animated_man" parent="." instance=ExtResource("5_kek77")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3.01589)

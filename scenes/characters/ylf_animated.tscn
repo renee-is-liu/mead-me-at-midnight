@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh7vybpaefp8g"]
+
+[ext_resource type="PackedScene" uid="uid://dlsgyfpemhqnc" path="res://assets/characters/ylf_joined (1).glb" id="1_yq58v"]
+
+[node name="ylf_joined (1)" instance=ExtResource("1_yq58v")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/2/rotation = Quaternion(0.7071, 0.00307825, -0.00307825, 0.7071)
+bones/3/rotation = Quaternion(2.3857e-09, -1.03684e-09, 0.00612455, 0.999981)
+bones/6/rotation = Quaternion(0.00307418, 0.7071, -0.7071, 0.00307424)
+bones/7/rotation = Quaternion(2.23962e-09, 2.30937e-08, -0.00611419, 0.999981)
+bones/8/rotation = Quaternion(-0.49911, 0.500889, -0.500889, -0.499109)
+bones/9/rotation = Quaternion(0.705651, 0.0453579, 0.705651, 0.0453573)
+bones/10/rotation = Quaternion(-7.85288e-09, 1.2517e-07, 0.0219626, 0.999759)
+bones/11/rotation = Quaternion(0.705651, -0.0453573, 0.705651, -0.0453567)
+bones/12/rotation = Quaternion(-7.63739e-09, -6.03924e-08, -0.0219626, 0.999759)
+bones/14/position = Vector3(0.988913, 1.6518, -0.0354365)
+bones/15/position = Vector3(-0.988913, 1.6518, -0.0354365)
+
+[node name="AnimationPlayer" parent="." index="2"]
+autoplay = "default"
