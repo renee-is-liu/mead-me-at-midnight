@@ -1,5 +1,3 @@
-[gd_scene load_steps=2 format=3 uid="uid://cp1q1qm26omnh"]
+[gd_scene format=3 uid="uid://cim60hk7pv1fy"]
 
-[ext_resource type="PackedScene" uid="uid://dbuqo7jc2d5ik" path="res://assets/characters/characters3d.com - Zombie.glb" id="1_c5bd0"]
-
-[node name="Characters3d_com Scene" instance=ExtResource("1_c5bd0")]
+[node name="Characters3d_com Scene"]

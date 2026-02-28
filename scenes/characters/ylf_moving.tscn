@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://do2k3je21xi12"]
+
+[ext_resource type="Script" uid="uid://bn06bh0e1ktjh" path="res://scripts/characters/ylf_moving.gd" id="1_3aief"]
+[ext_resource type="PackedScene" uid="uid://bg3xsk5jf1eec" path="res://scenes/characters/ylf_walking.tscn" id="1_xikx5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3aief"]
+size = Vector3(0.486389, 1.60762, 0.272812)
+
+[node name="YlfMoving" type="CharacterBody3D"]
+script = ExtResource("1_3aief")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="ylf_joined (2)" parent="Pivot" instance=ExtResource("1_xikx5")]
+transform = Transform3D(-0.746867, 0, -6.52932e-08, 0, 0.746867, 0, 6.52932e-08, 0, -0.746867, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00300143, 0.812629, -0.0274393)
+shape = SubResource("BoxShape3D_3aief")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(1.00609, 0, 0, 0, 1.00609, 0, 0, 0, 1.00609, 0.00285944, -0.0357572, 0)
+aabb = AABB(-0.363, 0.0484716, -0.001, 0.725, 1.61006, 0.002)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

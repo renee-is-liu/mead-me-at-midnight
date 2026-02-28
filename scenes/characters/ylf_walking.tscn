@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg3xsk5jf1eec"]
+
+[ext_resource type="PackedScene" uid="uid://bc42xwncp0jro" path="res://assets/characters/ylf_joined (2).glb" id="1_c7bj5"]
+[ext_resource type="Script" uid="uid://k5icc0pqy780" path="res://scripts/characters/ylf_walking.gd" id="2_h2d0d"]
+
+[node name="ylf_joined (2)" instance=ExtResource("1_c7bj5")]
+script = ExtResource("2_h2d0d")
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/2/rotation = Quaternion(0.7071, 0.00307825, -0.00307825, 0.7071)
+bones/3/rotation = Quaternion(2.3857e-09, -1.03684e-09, 0.00612455, 0.999981)
+bones/6/rotation = Quaternion(0.00307418, 0.7071, -0.7071, 0.00307424)
+bones/7/rotation = Quaternion(2.23962e-09, 2.30937e-08, -0.00611419, 0.999981)
+bones/8/position = Vector3(0.49063, 0.261994, 0.629008)
+bones/8/rotation = Quaternion(-0.49911, 0.500889, -0.500889, -0.499109)
+bones/9/rotation = Quaternion(0.0193813, 0.052843, 0.998336, 0.0125813)
+bones/9/scale = Vector3(0.999987, 1, 1.00005)
+bones/10/rotation = Quaternion(-8.01506e-09, 1.2668e-07, 0.0219786, 0.999758)
+bones/11/rotation = Quaternion(0.998335, -0.0125899, 0.0193808, -0.0528414)
+bones/11/scale = Vector3(0.999986, 1, 1.00005)
+bones/12/rotation = Quaternion(-2.35836e-09, -6.00137e-08, -0.02199, 0.999758)
+bones/13/position = Vector3(0.197843, 0.0402276, -0.0412089)
+bones/14/position = Vector3(-0.197843, 0.0402276, -0.0412089)
+bones/15/position = Vector3(-0.157324, 0.518887, 0.208791)
+bones/16/position = Vector3(0.988913, 1.6518, -0.0354365)
+bones/17/position = Vector3(-0.988913, 1.6518, -0.0354365)
+bones/18/position = Vector3(-0.629008, 1.65179, -0.49063)
+
+[node name="AnimationPlayer" parent="." index="2"]
+autoplay = "walk"

@@ -1,8 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bok7sxexw7x25"]
+[gd_scene format=3 uid="uid://ls6emf0jv2wt"]
 
-[ext_resource type="PackedScene" uid="uid://byk0ktbq8fmfu" path="res://assets/characters/characters3d.com - Idle.glb" id="1_h0slq"]
-
-[node name="Root Scene" instance=ExtResource("1_h0slq")]
+[node name="Root Scene"]
 
 [node name="Skeleton3D" parent="RootNode" index="0"]
 bones/0/position = Vector3(-0.0550826, 0.963662, -0.00558781)
