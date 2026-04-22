@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-var speed = 30
+var speed = 1
 var current_state = IDLE
 var dir = Vector3.FORWARD
 var start_pos
@@ -14,7 +14,8 @@ var player_in_chat_zone = false
 
 enum {
 	IDLE,
-	NEW_DIR,
+	LEFT,
+	RIGHT,
 	MOVE
 }
 
@@ -23,16 +24,18 @@ func _ready():
 	start_pos = position
 	
 func _process(delta):
-	if current_state == 0 or current_state == 1:
+	if current_state == 0 or current_state == 1 or current_state == 2:
 		$Pivot/ylf_walking/AnimationPlayer.play("idle")
-	elif current_state == 2 and !is_chatting:
+	elif current_state == 3 and !is_chatting:
 		$Pivot/ylf_walking/AnimationPlayer.play("walk")
 	if is_roaming:
 		match current_state:
 			IDLE:
 				pass
-			NEW_DIR:
-				dir = choose([Vector3.BACK, Vector3.FORWARD, Vector3.RIGHT, Vector3.LEFT])
+			LEFT:
+				rotate_y(1 * delta)
+			RIGHT:
+				rotate_y(-1 * delta)
 			MOVE:
 				move(delta)
 
@@ -42,7 +45,7 @@ func choose(array):
 
 func move(delta):
 	if !is_chatting:
-		position += dir * speed * delta
+		position += -transform.basis.z * speed * delta
 
 
 func _on_chat_detection_area_body_entered(body: Node3D) -> void:
@@ -58,5 +61,5 @@ func _on_chat_detection_area_body_exited(body: Node3D) -> void:
 
 func _on_timer_timeout() -> void:
 	$Timer.wait_time = choose([0.5, 1, 1.5])
-	current_state = choose([IDLE, NEW_DIR, MOVE])
+	current_state = choose([IDLE, LEFT, RIGHT, MOVE, MOVE, MOVE])
 	

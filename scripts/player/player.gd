@@ -13,13 +13,14 @@ var landing_velocity
 var distance = 0
 var footstep_distance = 2.1
 
+var freezeCamera = false;
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and not freezeCamera:
 		rotation_degrees.y -= event.relative.x / 10
 		$Camera3D.rotation_degrees.x -= event.relative.y / 10
 		$Camera3D.rotation_degrees.x = clamp($Camera3D.rotation_degrees.x, -90, 90)
@@ -108,3 +109,9 @@ func play_random_footstep_sound() -> void:
 	if footstep_sound.size() > 0:
 		$FootstepSound.stream = footstep_sound.pick_random()
 		$FootstepSound.play()
+
+
+func _on_dialogue_box_ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	freezeCamera = true
+	
